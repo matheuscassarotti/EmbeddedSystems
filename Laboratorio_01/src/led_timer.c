@@ -13,9 +13,9 @@ void main(void){
   SysCtlClockFreqSet(SYSCTL_OSC_INT | SYSCTL_USE_PLL | SYSCTL_CFG_VCO_320, 120000000); // 120MHz
 
   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF); // Habilita GPIO F (LED D3 = PF4, LED D4 = PF0)
-  while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF)); // Aguarda final da habilitaÁ„o
+  while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF)); // Aguarda final da habilita√ß√£o
     
-  GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_0); // LED D4 como saÌda
+  GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_0); // LED D4 como sa√≠da
   GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_0, 1); // LED D4 aceso
   GPIOPadConfigSet(GPIO_PORTF_BASE, GPIO_PIN_0, GPIO_STRENGTH_12MA, GPIO_PIN_TYPE_STD);
 
@@ -23,16 +23,18 @@ void main(void){
   SysTickEnable();
 
   while(1){
+      //Contador 24MHz: (1/24M) => 41,66 nanosegundos por ciclo -> (41,66 ns * 3 instru√ß√µes * 4 ciclos por instru√ß√£o) ^-1 = 2.000.000
+      //Contador 120MHz: (1/120M) => 8,33 nanosegundos por ciclo -> (8,33 ns * 3 instru√ß√µes * 4 ciclos por instru√ß√£o) ^-1 = 10.000.000                
       for(uint32_t timer = 0;timer<10000000;timer++){
         if(timer > 9999998){
           LED_D4 = !LED_D4;
           GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_0, LED_D4);
           
-          /* ###### AN¡LISE ########
-          24MHz - Baixa OtimizaÁ„o - Tempo estimado para 5 ciclos = 10,21s
-          120MHz - Baixa OtimizaÁ„o - Tempo estimado para 5 ciclos = 17,30s
-          24MHz - Alta OtimizaÁ„o - Tempo estimado para 5 ciclos = 4,11s
-          120MHz - Alta OtimizaÁ„o - Tempo estimado para 5 ciclos = 10,01s
+          /* ###### AN√ÅLISE ########
+          24MHz - Baixa Otimiza√ß√£o - Tempo estimado para 5 ciclos = 10,21s
+          120MHz - Baixa Otimiza√ß√£o - Tempo estimado para 5 ciclos = 17,30s
+          24MHz - Alta Otimiza√ß√£o - Tempo estimado para 5 ciclos = 4,11s
+          120MHz - Alta Otimiza√ß√£o - Tempo estimado para 5 ciclos = 10,01s
           ##########################
           */
           
