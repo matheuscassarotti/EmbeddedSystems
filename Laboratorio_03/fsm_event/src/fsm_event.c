@@ -102,7 +102,7 @@ void main(void){
           grey_seven();
           break;
       } //switch
-      contador = contador + 1;
+      contador++;
       if(contador > 7){
         contador = 0;
       } // if
