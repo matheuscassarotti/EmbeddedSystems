@@ -15,6 +15,54 @@ void SysTick_Handler(void){
   Evento = 1;
 } // SysTick_Handler
 
+void grey_zero(){
+  LEDOff(LED1);
+  LEDOff(LED2); 
+  LEDOff(LED3);
+}
+
+void grey_one(){
+  LEDOff(LED1); 
+  LEDOff(LED2); 
+  LEDOn(LED3);
+}
+
+void grey_two(){
+  LEDOff(LED1); 
+  LEDOn(LED2); 
+  LEDOn(LED3);
+}
+
+void grey_three(){
+  LEDOff(LED1); 
+  LEDOn(LED2); 
+  LEDOff(LED3);
+}
+
+void grey_four(){
+  LEDOn(LED1); 
+  LEDOn(LED2); 
+  LEDOff(LED3);
+}
+
+void grey_five(){
+  LEDOn(LED1); 
+  LEDOn(LED2); 
+  LEDOn(LED3);
+}
+
+void grey_six(){
+  LEDOn(LED1); 
+  LEDOff(LED2); 
+  LEDOn(LED3);
+}
+
+void grey_seven(){
+  LEDOn(LED1); 
+  LEDOff(LED2); 
+  LEDOff(LED3);
+}
+
 void main(void){
 
   LEDInit(LED1);
@@ -30,28 +78,28 @@ void main(void){
       Evento = 0;
       switch(contador){
         case 0:
-          LEDOff(LED1); LEDOff(LED2); LEDOff(LED3);
+          grey_zero();
           break;
         case 1:
-          LEDOff(LED1); LEDOff(LED2); LEDOn(LED3);
+          grey_one();
           break;
         case 2:
-          LEDOff(LED1); LEDOn(LED2); LEDOff(LED3);
+          grey_two();
           break;
         case 3:
-          LEDOff(LED1); LEDOn(LED2); LEDOn(LED3);
+          grey_three();
           break;
         case 4:
-          LEDOn(LED1); LEDOff(LED2); LEDOff(LED3);
+          grey_four();
           break;
         case 5:
-          LEDOn(LED1); LEDOff(LED2); LEDOn(LED3);
+          grey_five();
           break;
         case 6:
-          LEDOn(LED1); LEDOn(LED2); LEDOff(LED3);
+          grey_six();
           break;
         case 7:
-          LEDOn(LED1); LEDOn(LED2); LEDOn(LED3);
+          grey_seven();
           break;
       } //switch
       contador = contador + 1;

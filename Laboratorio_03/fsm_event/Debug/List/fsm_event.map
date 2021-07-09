@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V9.10.2.313/W64 for ARM                  08/Jul/2021  23:47:10
+# IAR ELF Linker V9.10.2.313/W64 for ARM                  09/Jul/2021  00:48:27
 # Copyright 2007-2021 IAR Systems AB.
 #
 #    Output file  =
@@ -68,29 +68,29 @@ define block HEAP with size = 64K, alignment = 8 { };
   .intvec          ro code          0x0   0x3c0  startup_TM4C1294.o [1]
                                 - 0x3c0   0x3c0
 
-"P1":                                     0x9d0
+"P1":                                     0xa10
   .text            ro code        0x3c0   0x2a0  sysctl.o [3]
   .rodata          const          0x660   0x1b0  sysctl.o [3]
-  .text            ro code        0x810   0x14e  gpio.o [3]
-  .text            ro code        0x95e     0x2  startup_TM4C1294.o [1]
-  .text            ro code        0x960   0x148  driverleds.o [1]
-  .text            ro code        0xaa8   0x11c  fsm_event.o [1]
-  .text            ro code        0xbc4    0x28  systick.o [3]
-  .rodata          const          0xbec    0x6c  sysctl.o [3]
-  .text            ro code        0xc58    0x38  zero_init3.o [4]
-  .rodata          const          0xc90    0x30  sysctl.o [3]
-  .text            ro code        0xcc0    0x28  data_init.o [4]
-  .iar.init_table  const          0xce8    0x10  - Linker created -
-  .text            ro code        0xcf8    0x20  system_TM4C1294_TW.o [1]
-  .text            ro code        0xd18    0x1e  cmain.o [4]
-  .text            ro code        0xd36     0x4  low_level_init.o [2]
-  .text            ro code        0xd3a     0x4  exit.o [2]
-  .text            ro code        0xd40     0xa  cexit.o [4]
-  .text            ro code        0xd4c    0x14  exit.o [5]
-  .text            ro code        0xd60    0x1c  cstartup_M.o [4]
-  .text            ro code        0xd7c    0x14  startup_TM4C1294.o [1]
-  .rodata          const          0xd90     0x0  zero_init3.o [4]
-                                - 0xd90   0x9d0
+  .text            ro code        0x810   0x15c  fsm_event.o [1]
+  .text            ro code        0x96c   0x148  driverleds.o [1]
+  .text            ro code        0xab4    0x28  systick.o [3]
+  .text            ro code        0xadc   0x14e  gpio.o [3]
+  .text            ro code        0xc2a     0x2  startup_TM4C1294.o [1]
+  .rodata          const          0xc2c    0x6c  sysctl.o [3]
+  .text            ro code        0xc98    0x38  zero_init3.o [4]
+  .rodata          const          0xcd0    0x30  sysctl.o [3]
+  .text            ro code        0xd00    0x28  data_init.o [4]
+  .iar.init_table  const          0xd28    0x10  - Linker created -
+  .text            ro code        0xd38    0x20  system_TM4C1294_TW.o [1]
+  .text            ro code        0xd58    0x1e  cmain.o [4]
+  .text            ro code        0xd76     0x4  low_level_init.o [2]
+  .text            ro code        0xd7a     0x4  exit.o [2]
+  .text            ro code        0xd80     0xa  cexit.o [4]
+  .text            ro code        0xd8c    0x14  exit.o [5]
+  .text            ro code        0xda0    0x1c  cstartup_M.o [4]
+  .text            ro code        0xdbc    0x14  startup_TM4C1294.o [1]
+  .rodata          const          0xdd0     0x0  zero_init3.o [4]
+                                - 0xdd0   0xa10
 
 "P2", part 1 of 2:                          0x8
   .bss             zero     0x2000'0000     0x4  fsm_event.o [1]
@@ -107,7 +107,7 @@ Unused ranges:
 
          From           To      Size
          ----           --      ----
-        0xd90     0xf'ffff  0xf'f270
+        0xdd0     0xf'ffff  0xf'f230
   0x2000'8010  0x2003'ffff  0x3'7ff0
 
 
@@ -135,11 +135,11 @@ command line/config:
 
 C:\Users\mathe\Desktop\Projetos IAR\TM4C1294_Bare_IAR9-main\Projects\fsm_event\Debug\Obj: [1]
     driverleds.o              328
-    fsm_event.o               284                 5
+    fsm_event.o               348                 5
     startup_TM4C1294.o        982
     system_TM4C1294_TW.o       32                 4
     -----------------------------------------------
-    Total:                  1'626                 9
+    Total:                  1'690                 9
 
 dl7M_tln.a: [2]
     exit.o                      4
@@ -171,7 +171,7 @@ shb_l.a: [5]
     Gaps                        4
     Linker created                      16   32'768
 ---------------------------------------------------
-    Grand Total:            2'868      604   32'777
+    Grand Total:            2'932      604   32'777
 
 
 *******************************************************************************
@@ -180,52 +180,60 @@ shb_l.a: [5]
 
 Entry                       Address   Size  Type      Object
 -----                       -------   ----  ----      ------
-.iar.init_table$$Base         0xce8          --   Gb  - Linker created -
-.iar.init_table$$Limit        0xcf8          --   Gb  - Linker created -
-?main                         0xd19         Code  Gb  cmain.o [4]
+.iar.init_table$$Base         0xd28          --   Gb  - Linker created -
+.iar.init_table$$Limit        0xd38          --   Gb  - Linker created -
+?main                         0xd59         Code  Gb  cmain.o [4]
 CSTACK$$Base            0x2000'0010          --   Gb  - Linker created -
 CSTACK$$Limit           0x2000'8010          --   Gb  - Linker created -
 Evento                  0x2000'0004    0x1  Data  Gb  fsm_event.o [1]
-GPIODirModeSet                0x811   0x28  Code  Gb  gpio.o [3]
-GPIOPadConfigSet              0x839  0x102  Code  Gb  gpio.o [3]
-GPIOPinTypeGPIOOutput         0x943    0xa  Code  Gb  gpio.o [3]
-GPIOPinWrite                  0x93b    0x8  Code  Gb  gpio.o [3]
-LEDInit                       0x961   0xba  Code  Gb  driverleds.o [1]
-LEDOff                        0xa59   0x3e  Code  Gb  driverleds.o [1]
-LEDOn                         0xa1b   0x3e  Code  Gb  driverleds.o [1]
-Region$$Table$$Base           0xce8          --   Gb  - Linker created -
-Region$$Table$$Limit          0xcf8          --   Gb  - Linker created -
+GPIODirModeSet                0xadd   0x28  Code  Gb  gpio.o [3]
+GPIOPadConfigSet              0xb05  0x102  Code  Gb  gpio.o [3]
+GPIOPinTypeGPIOOutput         0xc0f    0xa  Code  Gb  gpio.o [3]
+GPIOPinWrite                  0xc07    0x8  Code  Gb  gpio.o [3]
+LEDInit                       0x96d   0xba  Code  Gb  driverleds.o [1]
+LEDOff                        0xa65   0x3e  Code  Gb  driverleds.o [1]
+LEDOn                         0xa27   0x3e  Code  Gb  driverleds.o [1]
+Region$$Table$$Base           0xd28          --   Gb  - Linker created -
+Region$$Table$$Limit          0xd38          --   Gb  - Linker created -
 SysCtlClockFreqSet            0x423  0x1fc  Code  Gb  sysctl.o [3]
 SysCtlPeripheralEnable        0x405    0x8  Code  Gb  sysctl.o [3]
 SysCtlPeripheralReady         0x3e3    0x8  Code  Gb  sysctl.o [3]
-SysTickEnable                 0xbc5    0xc  Code  Gb  systick.o [3]
-SysTickIntEnable              0xbd1    0xc  Code  Gb  systick.o [3]
-SysTickPeriodSet              0xbdd    0x8  Code  Gb  systick.o [3]
-SysTick_Handler               0xaa9    0x8  Code  Gb  fsm_event.o [1]
+SysTickEnable                 0xab5    0xc  Code  Gb  systick.o [3]
+SysTickIntEnable              0xac1    0xc  Code  Gb  systick.o [3]
+SysTickPeriodSet              0xacd    0x8  Code  Gb  systick.o [3]
+SysTick_Handler               0x811    0x8  Code  Gb  fsm_event.o [1]
 SystemCoreClock         0x2000'0008    0x4  Data  Gb  system_TM4C1294_TW.o [1]
-SystemInit                    0xcf9   0x10  Code  Gb  system_TM4C1294_TW.o [1]
+SystemInit                    0xd39   0x10  Code  Gb  system_TM4C1294_TW.o [1]
 _SysCtlMemTimingGet           0x3c1   0x22  Code  Lc  sysctl.o [3]
 __Vectors                       0x0          --   Gb  startup_TM4C1294.o [1]
 __Vectors_End                 0x3c0         Data  Gb  startup_TM4C1294.o [1]
 __Vectors_Size {Abs}          0x3c0          --   Gb  startup_TM4C1294.o [1]
-__cmain                       0xd19         Code  Gb  cmain.o [4]
-__exit                        0xd4d   0x14  Code  Gb  exit.o [5]
-__iar_data_init3              0xcc1   0x28  Code  Gb  data_init.o [4]
-__iar_init_vfp                0xd85         Code  Wk  startup_TM4C1294.o [1]
-__iar_program_start           0xd61         Code  Gb  cstartup_M.o [4]
-__iar_zero_init3              0xc59   0x38  Code  Gb  zero_init3.o [4]
-__low_level_init              0xd37    0x4  Code  Gb  low_level_init.o [2]
+__cmain                       0xd59         Code  Gb  cmain.o [4]
+__exit                        0xd8d   0x14  Code  Gb  exit.o [5]
+__iar_data_init3              0xd01   0x28  Code  Gb  data_init.o [4]
+__iar_init_vfp                0xdc5         Code  Wk  startup_TM4C1294.o [1]
+__iar_program_start           0xda1         Code  Gb  cstartup_M.o [4]
+__iar_zero_init3              0xc99   0x38  Code  Gb  zero_init3.o [4]
+__low_level_init              0xd77    0x4  Code  Gb  low_level_init.o [2]
 __vector_table                  0x0         Data  Gb  startup_TM4C1294.o [1]
 __vector_table_0x1c            0x1c         Data  Gb  startup_TM4C1294.o [1]
-_call_main                    0xd25         Code  Gb  cmain.o [4]
-_exit                         0xd41         Code  Gb  cexit.o [4]
+_call_main                    0xd65         Code  Gb  cmain.o [4]
+_exit                         0xd81         Code  Gb  cexit.o [4]
 contador                0x2000'0000    0x4  Data  Gb  fsm_event.o [1]
-exit                          0xd3b    0x4  Code  Gb  exit.o [2]
+exit                          0xd7b    0x4  Code  Gb  exit.o [2]
 g_pppui32XTALtoVCO            0x660  0x1b0  Data  Lc  sysctl.o [3]
 g_pui32VCOFrequencies         0x658    0x8  Data  Lc  sysctl.o [3]
-g_pui32Xtals                  0xbec   0x6c  Data  Lc  sysctl.o [3]
-g_sXTALtoMEMTIM               0xc90   0x30  Data  Lc  sysctl.o [3]
-main                          0xab1  0x108  Code  Gb  fsm_event.o [1]
+g_pui32Xtals                  0xc2c   0x6c  Data  Lc  sysctl.o [3]
+g_sXTALtoMEMTIM               0xcd0   0x30  Data  Lc  sysctl.o [3]
+grey_five                     0x887   0x16  Code  Gb  fsm_event.o [1]
+grey_four                     0x871   0x16  Code  Gb  fsm_event.o [1]
+grey_one                      0x82f   0x16  Code  Gb  fsm_event.o [1]
+grey_seven                    0x8b3   0x16  Code  Gb  fsm_event.o [1]
+grey_six                      0x89d   0x16  Code  Gb  fsm_event.o [1]
+grey_three                    0x85b   0x16  Code  Gb  fsm_event.o [1]
+grey_two                      0x845   0x16  Code  Gb  fsm_event.o [1]
+grey_zero                     0x819   0x16  Code  Gb  fsm_event.o [1]
+main                          0x8c9   0x98  Code  Gb  fsm_event.o [1]
 
 
 [1] = C:\Users\mathe\Desktop\Projetos IAR\TM4C1294_Bare_IAR9-main\Projects\fsm_event\Debug\Obj
@@ -234,7 +242,7 @@ main                          0xab1  0x108  Code  Gb  fsm_event.o [1]
 [4] = rt7M_tl.a
 [5] = shb_l.a
 
-   2'868 bytes of readonly  code memory
+   2'932 bytes of readonly  code memory
      604 bytes of readonly  data memory
   32'777 bytes of readwrite data memory
 
