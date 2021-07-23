@@ -17,16 +17,16 @@ uint8_t index_i = 0, count = 0;
 void GPIOJ_Handler(void){
   ButtonIntClear(USW1);
   
-  osSemaphoreAcquire(vazio_id, 0); // há espaço disponível? timeout == 0, pois interrupção não pode bloquear semáforo!
+  osSemaphoreAcquire(vazio_id, 0); // hÃ¡ espaÃ§o disponÃ­vel? timeout == 0, pois se trata de interrupÃ§Ã£o
   buffer[index_i] = count; // coloca no buffer
-  osSemaphoreRelease(cheio_id); // sinaliza um espaço a menos
+  osSemaphoreRelease(cheio_id); // sinaliza um espaÃ§o a menos
       
-  index_i++; // incrementa índice de colocação no buffer
+  index_i++; // incrementa Ã­ndice de colocaÃ§Ã£o no buffer
   if(index_i >= BUFFER_SIZE)
     index_i = 0;
       
   count++;
-  count &= 0x0F; // produz nova informação
+  count &= 0x0F; // produz nova informaÃ§Ã£o
   osDelay(500);
 }
 
@@ -34,15 +34,15 @@ void consumidor(void *arg){
   uint8_t index_o = 0, state;
   
   while(1){
-    osSemaphoreAcquire(cheio_id, osWaitForever); // há dado disponível?
+    osSemaphoreAcquire(cheio_id, osWaitForever); // hÃ¡ dado disponÃ­vel?
     state = buffer[index_o]; // retira do buffer
-    osSemaphoreRelease(vazio_id); // sinaliza um espaço a mais
+    osSemaphoreRelease(vazio_id); // sinaliza um espaÃ§o a mais
     
     index_o++;
-    if(index_o >= BUFFER_SIZE) // incrementa índice de retirada do buffer
+    if(index_o >= BUFFER_SIZE) // incrementa Ã­ndice de retirada do buffer
       index_o = 0;
     
-    LEDWrite(LED4 | LED3 | LED2 | LED1, state); // apresenta informação consumida
+    LEDWrite(LED4 | LED3 | LED2 | LED1, state); // apresenta informaÃ§Ã£o consumida
     osDelay(500);
   } // while
 } // consumidor
@@ -58,8 +58,8 @@ void main(void){
 
   consumidor_id = osThreadNew(consumidor, NULL, NULL);
 
-  vazio_id = osSemaphoreNew(BUFFER_SIZE, BUFFER_SIZE, NULL); // espaços disponíveis = BUFFER_SIZE
-  cheio_id = osSemaphoreNew(BUFFER_SIZE, 0, NULL); // espaços ocupados = 0
+  vazio_id = osSemaphoreNew(BUFFER_SIZE, BUFFER_SIZE, NULL); // espaÃ§os disponÃ­veis = BUFFER_SIZE
+  cheio_id = osSemaphoreNew(BUFFER_SIZE, 0, NULL); // espaÃ§os ocupados = 0
   
   if(osKernelGetState() == osKernelReady)
     osKernelStart();
